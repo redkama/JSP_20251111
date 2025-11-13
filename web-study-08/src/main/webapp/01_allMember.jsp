@@ -1,3 +1,4 @@
+<%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.ResultSet"%>
@@ -8,7 +9,8 @@
 <%!
 	//선언문
 	Connection conn = null;
-	Statement stmt = null;
+	// Statement stmt = null;
+	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
 	String url = "jdbc:oracle:thin:@localhost:1521:xe";
@@ -38,11 +40,23 @@
 		</tr>
 		<%
 			try{
-				Class.forName("oracle.jdbc.driver.OracleDriver");  //드라이버 로드
-				conn = DriverManager.getConnection(url, uid, pass);  //오라클 연결
+				// 1. Oracle JDBC 드라이버 클래스를 메모리에 로드
+				// 드라이브를 로드해야 DriverManager가 오라클 DB와 통신이 가능
+				Class.forName("oracle.jdbc.driver.OracleDriver"); 
 				
-				stmt = conn.createStatement();  //sql 문장 오라클 전송
-				rs = stmt.executeQuery(sql);  // sql 구문 실행
+				// 2. 지정된 URL, 사용자명(uid), 비밀번호(pass)로 DB 연결 생성
+				// 연결 성공시 Connection 객제 반환
+				conn = DriverManager.getConnection(url, uid, pass);
+				
+				// 3. SQL 문을 데이터베이스로 전달할 Statement 객체 생성
+				// Statement를 통해 쿼리를 실행 할 수 있음
+				// stmt = conn.createStatement();  
+				pstmt = conn.prepareStatement(sql);
+				
+				// 4. SQL 쿼리를 실행하고 결과(ResultSet)를 받아옴
+				// select 일 때 결과 행들이 rs(ResultSet) 객체에 저장
+				// rs = stmt.executeQuery(sql);
+				rs = pstmt.executeQuery();
 				
 				while(rs.next()){
 					out.println("<tr>");
@@ -60,7 +74,7 @@
 				e.printStackTrace();
 			}finally{
 				rs.close();
-				stmt.close();
+				pstmt.close();
 				conn.close();
 			}
 		%>
