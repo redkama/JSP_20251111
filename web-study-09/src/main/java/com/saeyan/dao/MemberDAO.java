@@ -89,8 +89,8 @@ public class MemberDAO {
 	//아이디로 회원 정보 가져오는 메소드
 	public MemberVO getMember(String userid) {
 		
-		MemberVO mVo = null;
-		String sql = "select * from member userid = ?";
+		MemberVO mVo = new MemberVO();
+		String sql = "select * from member where userid = ?";
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -129,6 +129,112 @@ public class MemberDAO {
 		return mVo;
 		
 	} // end getMember
+
+	
+	//result : -1 아이디 사용가능
+	//result : 1 아이디 사용불가(중복)
+	public int confirmID(String userid) {
+		int result = -1;
+		
+		String sql = "select userid from member where userid = ?";
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = getConnection();  //DB연결
+			pstmt = con.prepareStatement(sql);   //sql 구문 전송. sql 에러 유무 체크 
+			pstmt.setString(1, userid);
+			
+			rs = pstmt.executeQuery();  //실행 및 결과 반환
+			
+			if(rs.next()) {
+				result = 1;
+			}
+			
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			try {
+				rs.close();
+				pstmt.close();
+				con.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+		
+	}  //end confirmID
+
+	public int insertMember(MemberVO mVo) {
+
+		int result = -1;
+		
+		String sql = "insert into member values(?,?,?,?,?,?)";
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = getConnection();  //DB연결
+			pstmt = con.prepareStatement(sql);   //sql 구문 전송. sql 에러 유무 체크 
+			pstmt.setString(1, mVo.getName());
+			pstmt.setString(2, mVo.getUserid());
+			pstmt.setString(3, mVo.getPwd());
+			pstmt.setString(4, mVo.getEmail());
+			pstmt.setString(5, mVo.getPhone());
+			pstmt.setInt(6, mVo.getAdmin());
+			
+			result = pstmt.executeUpdate();  //실행 및 결과 반환
+			
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				con.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}  // end insertMember
+
+	public void updateMember(MemberVO mVo) {
+
+		String sql = "update member set pwd=?, email=?, phone=?, admin=? where userid=?";
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = getConnection();  //DB연결
+			pstmt = con.prepareStatement(sql);   //sql 구문 전송. sql 에러 유무 체크 
+			pstmt.setString(1, mVo.getPwd());
+			pstmt.setString(2, mVo.getEmail());
+			pstmt.setString(3, mVo.getPhone());
+			pstmt.setInt(4, mVo.getAdmin());
+			pstmt.setString(5, mVo.getUserid());
+			
+			pstmt.executeUpdate();  //실행 및 결과 반환
+			
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				con.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
 	
 	
 }
+
+
+
