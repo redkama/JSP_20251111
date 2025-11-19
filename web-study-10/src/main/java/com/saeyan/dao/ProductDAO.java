@@ -68,5 +68,143 @@ public class ProductDAO {
 		return list;
 		
 	}
+
+	public void insertProduct(ProductVO pVo) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "insert into product(name, price, pictureurl, description) values(?, ?, ?, ?)";
+		
+		try {
+			//1. DB연결
+			con = DBManager.getConnection();
+			
+			//2. sql전송
+			pstmt = con.prepareStatement(sql);
+			
+			//3. sql맵핑
+			pstmt.setString(1, pVo.getName());
+			pstmt.setInt(2, pVo.getPrice());
+			pstmt.setString(3, pVo.getPictureUrl());
+			pstmt.setString(4, pVo.getDescription());
+			
+			//4. sql실행
+			pstmt.executeUpdate();
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(con, pstmt);
+		}
+		
+	} // end insertProduct
+
+	public ProductVO slectProductByCode(String code) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from product where code = ?";
+		
+		ProductVO pVo = new ProductVO();
+		
+		try {
+			//1. DB연결
+			con = DBManager.getConnection();
+			
+			//2. sql전송
+			pstmt = con.prepareStatement(sql);
+			
+			//3. sql맵핑
+			pstmt.setInt(1, Integer.parseInt(code));
+			
+			//4. sql실행
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				pVo.setCode(rs.getInt("code"));
+				pVo.setName(rs.getString("name"));
+				pVo.setPrice(rs.getInt("price"));
+				pVo.setPictureUrl(rs.getString("pictureurl"));
+				pVo.setDescription(rs.getString("description"));
+			}
+			/* 비추
+			if(rs.next()) {
+				pVo.setCode(rs.getInt(1));
+				pVo.setName(rs.getString(2));
+				pVo.setPrice(rs.getInt(3));
+				pVo.setPictureUrl(rs.getString(4));
+				pVo.setDescription(rs.getString(5));
+			}
+			*/
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(con, pstmt, rs);
+		}
+		
+		return pVo;
+	} // end slectProductByCode
+
+	public void updateProduct(ProductVO pVo) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "update product set name=?, price=?, pictureurl=?, description=? where code = ?";
+		
+		try {
+			//1. DB연결
+			con = DBManager.getConnection();
+			
+			//2. sql전송
+			pstmt = con.prepareStatement(sql);
+			
+			//3. sql맵핑
+			pstmt.setString(1, pVo.getName());
+			pstmt.setInt(2, pVo.getPrice());
+			pstmt.setString(3, pVo.getPictureUrl());
+			pstmt.setString(4, pVo.getDescription());
+			pstmt.setInt(5, pVo.getCode());
+			
+			//4. sql실행
+			pstmt.executeUpdate();
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(con, pstmt);
+		}
+		
+	} // end updateProduct
+
+	public void deleteProduct(int code) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "delete from product where code = ?";
+		
+		try {
+			//1. DB연결
+			con = DBManager.getConnection();
+			
+			//2. sql전송
+			pstmt = con.prepareStatement(sql);
+			
+			//3. sql맵핑
+			pstmt.setInt(1, code);
+			
+			//4. sql실행
+			pstmt.executeUpdate();
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(con, pstmt);
+		}
+	} // end deleteProduct
 	
 }

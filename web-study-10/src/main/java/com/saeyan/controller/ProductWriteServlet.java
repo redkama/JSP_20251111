@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.saeyan.dao.ProductDAO;
+import com.saeyan.dto.ProductVO;
 
 
 @WebServlet("/productWrite.do")
@@ -43,15 +45,29 @@ public class ProductWriteServlet extends HttpServlet {
 		String encType = "utf-8";
 		
 		int sizeLimit = 20*1024*1024;  // 최대 파일 용량 크기 20MB
-		MultipartRequest multipartRequest = new MultipartRequest(request, encType, sizeLimit, new DefaultFileRenamePolicy());
+		MultipartRequest multi = new MultipartRequest(request, path, sizeLimit, encType, new DefaultFileRenamePolicy());
 		
-		String name = multipartRequest.getParameter("name");
-		int price = Integer.parseInt(multipartRequest.getParameter("price"));
+		String name = multi.getParameter("name");
+		int price = Integer.parseInt(multi.getParameter("price"));
 		// 파일 업로드
-		String pictureUrl = multipartRequest.getFilesystemName("pictureUrl");
-		String description = multipartRequest.getParameter("description");
+		String pictureUrl = multi.getFilesystemName("pictureUrl");
+		String description = multi.getParameter("description");
+
+		// String originName = multi.getOriginalFileName("description");
+		// System.out.println("originName = " + originName);
 		
+		ProductVO pVo = new ProductVO();
+		pVo.setName(name);
+		pVo.setPrice(price);
+		pVo.setDescription(description);
+		pVo.setPictureUrl(pictureUrl);
 		
+		ProductDAO pDao = ProductDAO.getInstance();
+		
+		//ProductDAO클래스 insertProduct호출
+		pDao.insertProduct(pVo);
+		
+		response.sendRedirect("ProductList.do");
 		
 		
 	
