@@ -76,8 +76,85 @@ public class BoardDAO {
 		
 		
 		return list;
-	}
+	} // end selectAllBoards
 
 	
+	public void insertBoard(BoardVO bVo) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		String sql = "insert into board(name, email, pass, title, content)"
+				+ "values(?, ?, ?, ?, ?)";
+		
+		
+		
+		try {
+			//1. DB연결
+			con = DBManager.getConnection();
+			
+			//2. sql전송
+			pstmt = con.prepareStatement(sql);
+			
+			//3. sql맵핑
+			pstmt.setString(1, bVo.getName());
+			pstmt.setString(2, bVo.getEmail());
+			pstmt.setString(3, bVo.getPass());
+			pstmt.setString(4, bVo.getTitle());
+			pstmt.setString(5, bVo.getContent());
+			
+			//4. sql실행
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(con, pstmt);
+		}
+
+		
+	} // end insertBoard
+
+	public BoardVO selectOneByNum(int num) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		BoardVO bVo = new BoardVO();
+		
+		String sql = "select * from board where num = ?";
+		
+		try {
+			con = DBManager.getConnection();
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, num);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				bVo.setNum(rs.getInt("num"));
+				bVo.setName(rs.getString("name"));
+				bVo.setPass(rs.getString("pass"));
+				bVo.setEmail(rs.getString("email"));
+				bVo.setTitle(rs.getString("title"));
+			    bVo.setContent(rs.getString("content"));
+			    bVo.setReadcount(rs.getInt("readcount"));
+				bVo.setWritedate(rs.getTimestamp("writedate"));
+			    
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(con, pstmt, rs);
+		}
+		
+		
+		return bVo;
+	}
+
 	
 }
