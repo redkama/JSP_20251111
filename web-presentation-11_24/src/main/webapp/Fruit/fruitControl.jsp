@@ -17,6 +17,7 @@
                 <li><a href="FruitServilet?command=fruit_Item">상품목록</a></li>       
             </ul>
         </nav>
+        <div align="center">
   <h1>회원관리 페이지</h1>
 	<table>
       	<tr>
@@ -38,7 +39,7 @@
       		<td>ddddd@naver.com</td>
       </tr>		
       </table>
-		
+	</div>	
 			
 	</header>
 		<footer><p>COPYRICHT(C) 2025 과일농장, lnc. All Rights Reserved</p></footer>

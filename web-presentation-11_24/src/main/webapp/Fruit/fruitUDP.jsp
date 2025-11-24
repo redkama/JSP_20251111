@@ -52,8 +52,10 @@
 			<td>강동구 명일동</td>
 		</tr>
 	</table>
+	<div align="center">
 		<br><input type="submit" value="수정">
 			<input type="reset" value="취소">
+	</div>
 	 <footer><p>COPYRICHT(C) 2025 과일농장, lnc. All Rights Reserved</p></footer>
 </body>
 </html>

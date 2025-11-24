@@ -20,7 +20,6 @@ public class ProductDAO {
 		return instance;
 	}
 	
-	
 	//전체 데이터 가져오기
 	public List<ProductVO> selectAllProducts() {
 		

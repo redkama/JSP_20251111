@@ -25,13 +25,15 @@
         justify-content: center;
         }
         
+        .record
+        
         input{
         justify-content: center;
         }
 		
 		th {
 		background: rgb(255, 128, 0);
-		white-space: nowrap;}
+		white:10px;}
 	
 	
       	table{
@@ -47,6 +49,7 @@
       	padding : 10px;
       	text-align: left;
       	border: 1px solid #333;
+      	white-space: nowrap;
       	}
       	
       	a{

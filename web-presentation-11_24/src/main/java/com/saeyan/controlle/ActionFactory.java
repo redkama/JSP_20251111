@@ -1,11 +1,16 @@
 package com.saeyan.controlle;
 
 import com.saeyan.controlle.Action.Action;
-import com.saeyan.controlle.Action.FruitControltAction;
+import com.saeyan.controlle.Action.FruitCheckPassAction;
+import com.saeyan.controlle.Action.FruitCheckPassFormAction;
+import com.saeyan.controlle.Action.FruitControlAction;
+import com.saeyan.controlle.Action.FruitDeleteAction;
 import com.saeyan.controlle.Action.FruitHomeAction;
 import com.saeyan.controlle.Action.FruitItemAction;
 import com.saeyan.controlle.Action.FruitJoinAction;
 import com.saeyan.controlle.Action.FruitNDPAction;
+import com.saeyan.controlle.Action.FruitNDPformAction;
+import com.saeyan.controlle.Action.FruitNDPwriteAction;
 import com.saeyan.controlle.Action.FruitPDPAction;
 import com.saeyan.controlle.Action.FruitRequestAction;
 import com.saeyan.controlle.Action.FruitUDPAction;
@@ -35,7 +40,7 @@ private static ActionFactory instance = new ActionFactory();
 			action=new FruitRequestAction();
 			
 		}else if (command.equals("fruit_Control")) {
-			action=new FruitControltAction();
+			action=new FruitControlAction();
 			
 		}else if (command.equals("fruit_Item")) {
 			action=new FruitItemAction();
@@ -52,6 +57,20 @@ private static ActionFactory instance = new ActionFactory();
 		}else if (command.equals("fruit_UDP")) {
 			action=new FruitUDPAction();
 			
+		}else if (command.equals("fruit_NDP_form")) {
+			action=new FruitNDPformAction();
+			
+		}else if (command.equals("fruit_write")) {
+			action=new FruitNDPwriteAction();
+			
+		}else if (command.equals("fruit_check_pass_form")) {
+			action=new FruitCheckPassFormAction();
+			
+		}else if (command.equals("fruit_check_pass")) {
+			action=new FruitCheckPassAction();
+			
+		}else if (command.equals("fruit_delete")) {
+			action=new FruitDeleteAction();
 		}
 		return action;
 	}

@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/shopping.css">
+<script type="text/javascript" src="script/script.js"></script>
 </head>
 <body>
 		<nav>
@@ -17,28 +20,37 @@
             </ul>
         </nav>
 	<h1>공지 상세 페이지</h1>
+	<form name="frm" method="post" action="FruitServilet">
+         <input type="hidden" name="command" value="board_write">
 	<table>
 		<tr>
 			<th width="50">번호</th>
-			<td>1</td>
+			<td>${fruit.num }</td>
 		</tr>
 		<tr>	
 			<th>제목</th>
-			<td>제철과일</td>
+			<td>${fruit.title }</td>
 		</tr>
 		<tr>
 			<th>작성일</th>
-			<td>2025.11.22</td>
+			<td>${fruit.date }</td>
 		</tr>
 		<tr>	
 			<th>조회수</th>
-			<td>1</td>
+			<td>${fruit.views}</td>
 		</tr>
 		
 		<tr>
 			<th>내용</th>
-			<td>11월 제철과일은 사과, 유자, 배, 귤 입니다</td>
+			<td colspan="3"><pre>${fruit.text}</pre></td>
 		</tr>
 	</table>
+	<br>
+	<div align="center">
+	<input type="button" value="삭제" 
+		onclick="open_win('FruitServilet?command=fruit_check_pass_form&num=${fruit.num}','delete')">
+	<input type="button" value="목록으로" onclick="location.href='FruitServilet?command=fruit_home'">
+	</div>
+	</form>
 </body>
 </html>

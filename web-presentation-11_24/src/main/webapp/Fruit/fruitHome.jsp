@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/shopping.css">
 </head>
@@ -20,6 +22,10 @@
         </nav> 
         <h1>판매자 페이지</h1><br>    	
       <table>
+      	<tr>
+      		<td colspan="5" style="border: white; text-align: left;"><a
+               href="FruitServilet?command=fruit_NDP_form"><b>공지 등록</b></a></td>
+      	</tr>
       	<tr style="font-size: 20px; text-align: center;">
       		<td colspan="5" style ="border: white; text-align:left; font-size:25px ">
       		<b>공지사항</b></td>
@@ -29,13 +35,16 @@
       		<th>제목</th>	
       		<th>작성일</th>	
       		<th>조회수</th>	
+      		<th>내용</th>	
       </tr>
-      <tr>
-      		<td>1</td>
-      		<td><a href="FruitServilet?command=fruit_NDP">제철과일</a></td>
-      		<td>2025.11.22</td>
-      		<td>0</td>  
-      </tr>  	
+      <c:forEach var="fruit" items="${fruitList }">
+            <tr class="record">
+               <td>${fruit.num }</td>
+               <td><a href="FruitServilet?command=fruit_NDP&num=${fruit.num}">${fruit.title }</a></td>
+               <td>${fruit.date }</td>
+               <td>${fruit.views}</td>
+            </tr>
+         </c:forEach>
       </table>	
    </header>
      <footer><p>COPYRICHT(C) 2025 과일농장, lnc. All Rights Reserved</p></footer>

@@ -1,27 +1,20 @@
 package com.saeyan.controlle.Action;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.saeyan.dao.ProductDAO;
-import com.saeyan.dto.ProductVO;
 
 public class FruitItemAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ProductDAO pDao = ProductDAO.getInstance();
-		List<ProductVO> list = pDao.selectAllProducts();
-		
-		request.setAttribute("productList", list);
-		
-		request.getRequestDispatcher("/Fruit/fruitItem.jsp").forward(request, response);
-		
-		}
+		String url = "/Fruit/fruitItem.jsp";  
+	      
+	      request.getRequestDispatcher(url)
+	      .forward(request, response);
+	}
 
 }

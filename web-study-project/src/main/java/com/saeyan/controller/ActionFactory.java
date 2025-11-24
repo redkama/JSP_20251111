@@ -1,15 +1,17 @@
 package com.saeyan.controller;
 
+import com.saeyan.controller.action.FruitRequestAction;
+import com.saeyan.controller.action.FruitControlAction;
+import com.saeyan.controller.action.FruitCheckPassAction;
+import com.saeyan.controller.action.FruitCheckPassFormAction;
+import com.saeyan.controller.action.FruitDeleteAction;
+import com.saeyan.controller.action.FruitJoinAction;
+import com.saeyan.controller.action.FruitNDPAction;
+import com.saeyan.controller.action.FruitNDPformAction;
+import com.saeyan.controller.action.FruitNDPwriteAction;
+import com.saeyan.controller.action.FruitPDPAction;
+import com.saeyan.controller.action.FruitUDPAction;
 import com.saeyan.controller.action.Action;
-import com.saeyan.controller.action.BoardCheckPassAction;
-import com.saeyan.controller.action.BoardCheckPassFormAction;
-import com.saeyan.controller.action.BoardDeleteAction;
-import com.saeyan.controller.action.BoardListAction;
-import com.saeyan.controller.action.BoardUpdateAction;
-import com.saeyan.controller.action.BoardUpdateFormAction;
-import com.saeyan.controller.action.BoardViewAction;
-import com.saeyan.controller.action.BoardWriteAction;
-import com.saeyan.controller.action.BoardWriteFormAction;
 import com.saeyan.controller.action.FruitHomeAction;
 import com.saeyan.controller.action.FruitLoginAction;
 import com.saeyan.controller.action.ProductDeleteAction;
@@ -43,38 +45,46 @@ public class ActionFactory {
 		}else if (command.equals("fruit_login")) {
 			action = new FruitLoginAction();
 		
-		} else if(command.equals("board_list")) {
-			action = new BoardListAction();
-			
-		} else if(command.equals("board_write_form")) {
-			action = new BoardWriteFormAction();
-			
-		} else if(command.equals("board_write")) {
-			action = new BoardWriteAction();
-			
-		} else if(command.equals("board_view")) {
-			action = new BoardViewAction();
-			
-		} else if(command.equals("board_check_pass_form")) {
-			action = new BoardCheckPassFormAction();
-			
-		} else if(command.equals("board_check_pass")) {
-			action = new BoardCheckPassAction();
-			
-		} else if(command.equals("board_delete")) {
-			action = new BoardDeleteAction();
-			
-		}
-		else if(command.equals("board_update_form")) {
-			action = new BoardUpdateFormAction();
-			
-		}
-		else if(command.equals("board_update")) {
-			action = new BoardUpdateAction();
-			
 		}
 		
+		
+		else if (command.equals("fruit_Request")) {
+			action=new FruitRequestAction();
 			
+		}else if (command.equals("fruit_Control")) {
+			action=new FruitControlAction();
+			
+		
+			
+		}else if (command.equals("fruit_Join")) {
+			action=new FruitJoinAction();
+			
+		}else if (command.equals("fruit_PDP")) {
+			action=new FruitPDPAction();
+			
+		}else if (command.equals("fruit_NDP")) {
+			action=new FruitNDPAction();
+			
+		}else if (command.equals("fruit_UDP")) {
+			action=new FruitUDPAction();
+			
+		}else if (command.equals("fruit_NDP_form")) {
+			action=new FruitNDPformAction();
+			
+		}else if (command.equals("fruit_write")) {
+			action=new FruitNDPwriteAction();
+			
+		}else if (command.equals("fruit_check_pass_form")) {
+			action=new FruitCheckPassFormAction();
+			
+		}else if (command.equals("fruit_check_pass")) {
+			action=new FruitCheckPassAction();
+			
+		}else if (command.equals("fruit_delete")) {
+			action=new FruitDeleteAction();
+		}
+
+		
 		
 		
 		 else if(command.equals("product_list")) {

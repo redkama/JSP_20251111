@@ -31,8 +31,8 @@
     <fullyQualifiedTypeName name="com.saeyan.dto.BoardVO"/>
     <fullyQualifiedTypeName name="com.saeyan.dao.BoardDAO"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
-    <fullyQualifiedTypeName name="com.saeyan.dao.ProductDAO"/>
-    <fullyQualifiedTypeName name="com.saeyan.dto.ProductVO"/>
     <fullyQualifiedTypeName name="com.oreilly.servlet.MultipartRequest"/>
     <fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
+    <fullyQualifiedTypeName name="com.saeyan.dto.ProductVO"/>
+    <fullyQualifiedTypeName name="com.saeyan.dao.ProductDAO"/>
 </qualifiedTypeNameHistroy>

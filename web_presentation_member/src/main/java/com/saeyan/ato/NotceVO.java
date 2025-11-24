@@ -1,6 +1,6 @@
-package com.saeyan.dto;
+package com.saeyan.ato;
 
-public class NoticeVO {
+public class NotceVO {
 	
 	/*
 	 * 번호,게시물 고유 번호,Integer
