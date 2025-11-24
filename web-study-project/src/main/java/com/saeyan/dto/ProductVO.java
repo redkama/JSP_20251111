@@ -1,13 +1,14 @@
 package com.saeyan.dto;
 
 /*
-create table product(
-		code int auto_increment primary key,
-	    name varchar(100),
-	    price int,
-	    pictureurl varchar(50),
-	    description varchar(1000)
-	);
+create table fruitList(
+	code int primary key auto_increment,
+    name varchar(30),
+    price int,
+    origin varchar(30),
+    description varchar(1000),
+    pictureurl varchar(50)
+);
 */
 
 public class ProductVO {
@@ -15,6 +16,7 @@ public class ProductVO {
 	private Integer code;
 	private String name;
 	private Integer price;
+	private String origin;
 	private String description;
 	private String pictureUrl;
 	
@@ -36,6 +38,12 @@ public class ProductVO {
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
+	public String getOrigin() {
+		return origin;
+	}
+	public void setOrigin(String origin) {
+		this.origin = origin;
+	}
 	public String getDescription() {
 		return description;
 	}
@@ -51,12 +59,10 @@ public class ProductVO {
 	
 	@Override
 	public String toString() {
-		return "ProductVO [code=" + code + ", name=" + name + ", price=" + price + ", description=" + description
-				+ ", pictureUrl=" + pictureUrl + "]";
+		return "ProductVO [code=" + code + ", name=" + name + ", price=" + price + ", origin=" + origin
+				+ ", description=" + description + ", pictureUrl=" + pictureUrl + "]";
 	}
+	
 
-	
-	
-	
 	
 }

@@ -18,7 +18,7 @@ public class BoardDeleteAction implements Action {
 		BoardDAO bDao = BoardDAO.getInstance();
 		bDao.deleteBoard(num);
 		
-		response.sendRedirect("BoardServlet?command=board_list");
+		response.sendRedirect("FruitServlet?command=board_list");
 		//new BoardListAction().execute(request, response);
 	}
 

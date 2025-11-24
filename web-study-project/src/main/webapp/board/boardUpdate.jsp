@@ -12,7 +12,7 @@
 <body>
    <div id="wrap" align="center">
       <h1>게시글 수정</h1>
-      <form name="frm" method="post" action="BoardServlet">
+      <form name="frm" method="post" action="FruitServlet">
          <input type="hidden" name="command" value="board_update"> <input
             type="hidden" name="num" value="${board.num}">
          <table>
@@ -44,7 +44,7 @@
          <br>
          <br> <input type="submit" value="등록" onclick="return boardCheck()"> 
          <input type="reset" value="다시 작성"> 
-         <input type="button" value="목록" onclick="location.href='BoardServlet?command=board_list'">
+         <input type="button" value="목록" onclick="location.href='FruitServlet?command=board_list'">
       </form>
    </div>
 </body>

@@ -38,7 +38,7 @@ public class BoardUpdateAction implements Action {
 				
 		//3. 화면 전환
 		// Post -> Redirect -> Get (PRG방식)
-		response.sendRedirect("BoardServlet?command=board_list");
+		response.sendRedirect("FruitServlet?command=board_list");
 //		new BoardListAction().execute(request, response);
 				
 	}

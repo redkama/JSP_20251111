@@ -20,14 +20,13 @@ public class ProductDAO {
 		return instance;
 	}
 	
-	
 	//전체 데이터 가져오기
 	public List<ProductVO> selectAllProducts() {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from product order by code desc";
+		String sql = "select * from fruitList order by code desc";
 		List<ProductVO> list = new ArrayList<ProductVO>();
 		ProductVO pVo = null;
 		
@@ -50,6 +49,7 @@ public class ProductDAO {
 				pVo.setCode(rs.getInt("code"));
 				pVo.setName(rs.getString("name"));
 				pVo.setPrice(rs.getInt("price"));
+				pVo.setOrigin(rs.getString("origin"));
 				pVo.setPictureUrl(rs.getString("pictureurl"));
 				pVo.setDescription(rs.getString("description"));
 				
@@ -73,7 +73,7 @@ public class ProductDAO {
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "insert into product(name, price, pictureurl, description) values(?, ?, ?, ?)";
+		String sql = "insert into fruitList(name, price, origin, description, pictureurl) values(?, ?, ?, ?, ?)";
 		
 		try {
 			//1. DB연결
@@ -85,8 +85,9 @@ public class ProductDAO {
 			//3. sql맵핑
 			pstmt.setString(1, pVo.getName());
 			pstmt.setInt(2, pVo.getPrice());
-			pstmt.setString(3, pVo.getPictureUrl());
+			pstmt.setString(3, pVo.getOrigin());
 			pstmt.setString(4, pVo.getDescription());
+			pstmt.setString(5, pVo.getPictureUrl());
 			
 			//4. sql실행
 			pstmt.executeUpdate();
@@ -105,7 +106,7 @@ public class ProductDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from product where code = ?";
+		String sql = "select * from fruitList where code = ?";
 		
 		ProductVO pVo = new ProductVO();
 		
@@ -126,18 +127,10 @@ public class ProductDAO {
 				pVo.setCode(rs.getInt("code"));
 				pVo.setName(rs.getString("name"));
 				pVo.setPrice(rs.getInt("price"));
-				pVo.setPictureUrl(rs.getString("pictureurl"));
+				pVo.setOrigin(rs.getString("origin"));
 				pVo.setDescription(rs.getString("description"));
+				pVo.setPictureUrl(rs.getString("pictureurl"));
 			}
-			/* 비추
-			if(rs.next()) {
-				pVo.setCode(rs.getInt(1));
-				pVo.setName(rs.getString(2));
-				pVo.setPrice(rs.getInt(3));
-				pVo.setPictureUrl(rs.getString(4));
-				pVo.setDescription(rs.getString(5));
-			}
-			*/
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -152,7 +145,7 @@ public class ProductDAO {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "update product set name=?, price=?, pictureurl=?, description=? where code = ?";
+		String sql = "update fruitList set name=?, price=?, origin=?, description=?, pictureurl=? where code = ?";
 		
 		try {
 			//1. DB연결
@@ -164,9 +157,10 @@ public class ProductDAO {
 			//3. sql맵핑
 			pstmt.setString(1, pVo.getName());
 			pstmt.setInt(2, pVo.getPrice());
-			pstmt.setString(3, pVo.getPictureUrl());
+			pstmt.setString(3, pVo.getOrigin());
 			pstmt.setString(4, pVo.getDescription());
-			pstmt.setInt(5, pVo.getCode());
+			pstmt.setString(5, pVo.getPictureUrl());
+			pstmt.setInt(6, pVo.getCode());
 			
 			//4. sql실행
 			pstmt.executeUpdate();
@@ -184,7 +178,7 @@ public class ProductDAO {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "delete from product where code = ?";
+		String sql = "delete from fruitList where code = ?";
 		
 		try {
 			//1. DB연결

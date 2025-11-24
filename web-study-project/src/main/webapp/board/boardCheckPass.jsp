@@ -10,7 +10,7 @@
 </head>
 <body>
      <h1>비밀번호 확인</h1>
-       <form action="BoardServlet" method="get" name="frm">
+       <form action="FruitServlet" method="get" name="frm">
           <input type="hidden" name="command" value="board_check_pass">
           <input type="hidden" name="num" value="${param.num}">
           <table>

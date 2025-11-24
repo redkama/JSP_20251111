@@ -10,6 +10,14 @@ import com.saeyan.controller.action.BoardUpdateFormAction;
 import com.saeyan.controller.action.BoardViewAction;
 import com.saeyan.controller.action.BoardWriteAction;
 import com.saeyan.controller.action.BoardWriteFormAction;
+import com.saeyan.controller.action.FruitHomeAction;
+import com.saeyan.controller.action.FruitLoginAction;
+import com.saeyan.controller.action.ProductDeleteAction;
+import com.saeyan.controller.action.ProductListAction;
+import com.saeyan.controller.action.ProductUpdateAction;
+import com.saeyan.controller.action.ProductUpdateFormAction;
+import com.saeyan.controller.action.ProductWriteAction;
+import com.saeyan.controller.action.ProductWriteFormAction;
 
 public class ActionFactory {
 
@@ -29,7 +37,13 @@ public class ActionFactory {
 		System.out.println("ActionFactory : " + command);
 		
 		//조건문
-		if(command.equals("board_list")) {
+		if(command.equals("fruit_home")) {
+			action = new FruitHomeAction();
+			
+		}else if (command.equals("fruit_login")) {
+			action = new FruitLoginAction();
+		
+		} else if(command.equals("board_list")) {
 			action = new BoardListAction();
 			
 		} else if(command.equals("board_write_form")) {
@@ -61,6 +75,42 @@ public class ActionFactory {
 		}
 		
 			
+		
+		
+		 else if(command.equals("product_list")) {
+		action = new ProductListAction();
+		
+		} 
+		
+		 else if(command.equals("product_update_form")) {
+				action = new ProductUpdateFormAction();
+				
+		}
+		
+		 else if(command.equals("product_update")) {
+				action = new ProductUpdateAction();
+				
+		}
+		
+		 else if(command.equals("product_delete")) {
+				action = new ProductDeleteAction();
+				
+		}
+		
+		 else if(command.equals("product_write_form")) {
+				action = new ProductWriteFormAction();
+				
+		}
+		
+		 else if(command.equals("product_write")) {
+				action = new ProductWriteAction();
+				
+		}
+		
+		
+		
+		
+		
 		
 		return action;
 		
