@@ -12,6 +12,6 @@ public class FruitFindIdFormAction implements Action {
     public void execute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        request.getRequestDispatcher("/fruit/fruitFindId.jsp").forward(request, response);
+        request.getRequestDispatcher("/member/fruitFindId.jsp").forward(request, response);
     }
 }

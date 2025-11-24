@@ -21,7 +21,7 @@ public class FruitUDPAction implements Action {
 
         request.setAttribute("mvo", mvo);        // ← JSP로 보내기
 
-        request.getRequestDispatcher("/fruit/fruitUDP.jsp")
+        request.getRequestDispatcher("/member/fruitUDP.jsp")
                .forward(request, response);
     }
 }

@@ -19,6 +19,6 @@ public class FruitEditAction implements Action {
         MemberVO mvo = mdao.getMember(userId);
 
         request.setAttribute("mvo", mvo);
-        request.getRequestDispatcher("/fruit/fruitEdit.jsp").forward(request, response);
+        request.getRequestDispatcher("/member/fruitEdit.jsp").forward(request, response);
     }
 }

@@ -20,6 +20,6 @@ public class FruitControlAction implements Action {
         List<MemberVO> list = mdao.selectAllMembers();   // ✅ 회원 전체 조회
 
         request.setAttribute("memberList", list);        // ✅ JSP로 전달
-        request.getRequestDispatcher("/fruit/fruitControl.jsp").forward(request, response);
+        request.getRequestDispatcher("/member/fruitControl.jsp").forward(request, response);
     }
 }

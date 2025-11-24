@@ -12,6 +12,6 @@ public class FruitJoinFormAction implements Action {
             throws ServletException, IOException {
 
         // 회원가입 화면으로 이동
-        request.getRequestDispatcher("fruit/fruitJoin.jsp").forward(request, response);
+        request.getRequestDispatcher("member/fruitJoin.jsp").forward(request, response);
     }
 }

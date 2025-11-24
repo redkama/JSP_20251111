@@ -27,7 +27,7 @@ public class FruitFindIdAction implements Action {
         if (userId != null) {
             out.println("<script>");
             out.println("alert('회원님의 아이디는 " + userId + " 입니다.');");
-            out.println("location.href='FruitServilet?command=fruit_login';");
+            out.println("location.href='FruitServlet?command=fruit_login';");
             out.println("</script>");
         } else {
             out.println("<script>");

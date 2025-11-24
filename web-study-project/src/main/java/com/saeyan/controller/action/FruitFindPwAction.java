@@ -27,7 +27,7 @@ public class FruitFindPwAction implements Action {
         if (userPw != null) {
             out.println("<script>");
             out.println("alert('회원님의 비밀번호는 " + userPw + " 입니다.');");
-            out.println("location.href='FruitServilet?command=fruit_login';");
+            out.println("location.href='FruitServlet?command=fruit_login';");
             out.println("</script>");
         } else {
             out.println("<script>");
