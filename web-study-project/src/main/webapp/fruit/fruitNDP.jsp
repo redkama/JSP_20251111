@@ -16,7 +16,7 @@
                 <li><a href="FruitServlet?command=fruit_home">홈으로</a></li>
                 <li><a href="FruitServlet?command=fruit_home">공지사항</a></li>
                 <li><a href="FruitServlet?command=fruit_Control">회원관리</a></li>
-                <li><a href="FruitServlet?command=fruit_Item">상품목록</a></li>     
+                <li><a href="FruitServlet?command=product_list">상품목록</a></li>    
             </ul>
         </nav>
 	<h1>공지 상세 페이지</h1>

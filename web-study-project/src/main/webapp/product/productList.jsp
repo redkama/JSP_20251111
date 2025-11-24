@@ -13,8 +13,8 @@
 	<nav>
     	<ul>
         	<li><a href="FruitServlet?command=fruit_home">홈으로</a></li>
-            <li><a href="FruitServlet?command=bord_list">공지사항</a></li>
-            <li><a href="FruitServlet?command=member_list">회원관리</a></li>
+            <li><a href="FruitServlet?command=fruit_home">공지사항</a></li>
+            <li><a href="FruitServlet?command=fruit_Control">회원관리</a></li>
             <li><a href="FruitServlet?command=product_list">상품목록</a></li>           
         </ul>
     </nav>

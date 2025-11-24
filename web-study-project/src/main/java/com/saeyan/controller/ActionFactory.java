@@ -9,8 +9,13 @@ import com.saeyan.controller.action.FruitJoinAction;
 import com.saeyan.controller.action.FruitNDPAction;
 import com.saeyan.controller.action.FruitNDPformAction;
 import com.saeyan.controller.action.FruitNDPwriteAction;
-import com.saeyan.controller.action.FruitPDPAction;
 import com.saeyan.controller.action.FruitUDPAction;
+import com.saeyan.controller.action.FruitJoinFormAction;
+import com.saeyan.controller.action.FruitFindIdAction;
+import com.saeyan.controller.action.FruitFindIdFormAction;
+import com.saeyan.controller.action.FruitFindPwAction;
+import com.saeyan.controller.action.FruitFindPwFormAction;
+import com.saeyan.controller.action.FruitUpdateAction;
 import com.saeyan.controller.action.Action;
 import com.saeyan.controller.action.FruitHomeAction;
 import com.saeyan.controller.action.FruitLoginAction;
@@ -57,10 +62,12 @@ public class ActionFactory {
 		
 			
 		}else if (command.equals("fruit_Join")) {
-			action=new FruitJoinAction();
-			
-		}else if (command.equals("fruit_PDP")) {
-			action=new FruitPDPAction();
+		    // 회원가입 화면 표시
+		    action = new FruitJoinFormAction();
+
+		}else if (command.equals("fruit_join_action")) {
+		    // 회원가입 처리
+		    action = new FruitJoinAction();
 			
 		}else if (command.equals("fruit_NDP")) {
 			action=new FruitNDPAction();
@@ -84,6 +91,20 @@ public class ActionFactory {
 			action=new FruitDeleteAction();
 		}
 
+		
+		
+		
+		else if (command.equals("fruit_update")) {
+			action = new FruitUpdateAction();
+		}else if (command.equals("fruit_find_id_form")) {
+			action = new FruitFindIdFormAction();
+		}else if (command.equals("fruit_find_id_action")) {
+			action = new FruitFindIdAction();
+		}else if (command.equals("fruit_find_pw_form")) {
+			action = new FruitFindPwFormAction();
+		}else if (command.equals("fruit_find_pw_action")) {
+			action = new FruitFindPwAction();
+		} 
 		
 		
 		
