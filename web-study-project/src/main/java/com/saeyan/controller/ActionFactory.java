@@ -25,6 +25,7 @@ import com.saeyan.controller.action.ProductUpdateAction;
 import com.saeyan.controller.action.ProductUpdateFormAction;
 import com.saeyan.controller.action.ProductWriteAction;
 import com.saeyan.controller.action.ProductWriteFormAction;
+import com.saeyan.controller.action.ProductviewFormAction;
 
 public class ActionFactory {
 
@@ -137,6 +138,12 @@ public class ActionFactory {
 				action = new ProductWriteAction();
 				
 		}
+		
+		 else if(command.equals("product_view_form")) {
+				action = new ProductviewFormAction();
+				
+		}
+		
 		
 		
 		

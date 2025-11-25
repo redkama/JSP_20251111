@@ -29,7 +29,7 @@
             <a href="FruitServlet?command=product_write_form">상품 등록</a></td>
         </tr>
       	<tr>
-      		<th>번호</th>	
+      		<th style = "width:10px">번호</th>	
       		<th>상품명</th>	
       		<th>가격</th>	
       		<th>원산지</th>
@@ -39,7 +39,7 @@
      	 <c:forEach var="product" items="${productList}">
          <tr class="record">
             <td>${product.code}</td>
-            <td>${product.name}</td>
+            <td><a href="FruitServlet?command=product_view_form&code=${product.code}">${product.name}</a></td>
             <td>${product.price} 원</td>
             <td>${product.origin}</td>
             <td><a href="FruitServlet?command=product_update_form&code=${product.code}">상품 수정</a> </td>

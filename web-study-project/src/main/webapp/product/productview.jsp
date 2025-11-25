@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="css/shop.css">
 <script type="text/javascript" src="script/product.js"></script>
 </head>
-   
+<body>
 <div class="wrap">
 		<nav>
         	<ul>
@@ -19,73 +19,54 @@
                 <li><a href="FruitServlet?command=product_list">상품목록</a></li>           
             </ul>
         </nav>
-<h1>상품 등록 페이지</h1>
+<h1>상품 상세 페이지</h1>
 			
- 	<form method="post" name="frm" action="FruitServlet" enctype="multipart/form-data">
-    	<input type="hidden" name="command" value="product_write">
-
+ 	<form method="post" name="frm" action="FruitServlet">
+ 		<input type="hidden" name="command" value="product_update_form">
+         <input type="hidden" name="code" value="${product.code}"> 
+		          
          <table>
             <tr>
-               <td width="150px">
-               <c:choose>
+               <td width="150px"><c:choose>
                      <c:when test="${empty product.pictureUrl}">
-                        <img id="previewImg" src="upload/noimage.gif" style="width:100%; height:auto;">
+                        <img src="upload/noimage.gif" style="width:100%; height:auto;">
                      </c:when>
                      <c:otherwise>
-                        <img id="previewImg" src="upload/${product.pictureUrl}" style="width:100%; height:auto;">
+                        <img src="upload/${product.pictureUrl}" style="width:100%; height:auto;">
                      </c:otherwise>
-               </c:choose>
-               </td>
+                  </c:choose></td>
                <td>
                   <table style= "width:600px">
                      <tr>
                         <th style="width: 80px">상품명</th>
-                        <td><input type="text" name="name" size="62"></td>
+                        <td>${product.name}</td>
                      </tr>
                      <tr>
                         <th>가 격</th>
-                        <td><input type="text" name="price" > 원</td>
+                        <td>${product.price} 원</td>
                      </tr>
                      <tr>
                         <th>원산지</th>
-                        <td><input type="text" name="origin" ></td>
+                        <td>${product.origin}</td>
                      </tr>
-                     <tr>
-                        <th>사 진</th>
-                        <td><input type="file" name="pictureUrl" accept="image/*" onchange="previewImage(event)"><br>
-                           (주의사항 : 이미지를 변경하고자 할때만 선택하시오)</td>
-                           
-                     </tr>
-  				
-
-         
+                
                      <tr>
                         <th>설 명</th>
-                        <td><textarea cols="65" rows="10" name="description"> </textarea>
-                        </td>
+                        <td>${product.description}</td>
                      </tr>
                   </table>
                </td>
             </tr>
          </table>
-         <br> <input type="submit" value="등록" onclick="return productCheck()"> 
-         	<input type="reset" value="다시작성"> 
+         <input type="hidden" name="nonmakeImg" value="${product.pictureUrl}">
+         <br> <input type="submit" value="수정하기" onclick="return productCheck()"> 
+         	<input type="button" value="삭제하기" onclick="
+           if (confirm('정말 삭제하시겠습니까?')) {
+               location.href='FruitServlet?command=product_delete&code=${product.code}';
+           }
+       		">
          	<input type="button" value="목록" onclick="location.href='FruitServlet?command=product_list'">
       </form>
-      
-    <script>
-	function previewImage(event) {
-    let file = event.target.files[0];
-    if (!file) return;
-
-    let reader = new FileReader();
-    reader.onload = function(e) {
-        document.getElementById('previewImg').src = e.target.result;
-    };
-    reader.readAsDataURL(file);
-	}
-	</script>
-      
       
 </div>
 </body>

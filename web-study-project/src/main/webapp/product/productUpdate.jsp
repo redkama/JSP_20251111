@@ -21,18 +21,19 @@
         </nav>
 <h1>상품 수정 페이지</h1>
 			
- 	<form method="post" name="frm" action="FruitServlet">
+ 	<form method="post" name="frm" action="FruitServlet" enctype="multipart/form-data">
  		<input type="hidden" name="command" value="product_update">
          <input type="hidden" name="code" value="${product.code}"> 
+         <input type="hidden" name="nonmakeImg" value="${product.pictureUrl}">
 		          
          <table>
             <tr>
                <td width="150px"><c:choose>
                      <c:when test="${empty product.pictureUrl}">
-                        <img src="upload/noimage.gif">
+                        <img id="previewImg" src="upload/noimage.gif" style="width:100%; height:auto;">
                      </c:when>
                      <c:otherwise>
-                        <img src="upload/${product.pictureUrl}">
+                        <img id="previewImg" src="upload/${product.pictureUrl}" style="width:100%; height:auto;">
                      </c:otherwise>
                   </c:choose></td>
                <td>
@@ -51,7 +52,7 @@
                      </tr>
                      <tr>
                         <th>사 진</th>
-                        <td><input type="file" name="pictureUrl"><br>
+                        <td><input type="file" name="pictureUrl" accept="image/*" onchange="previewImage(event)"><br>
                            (주의사항 : 이미지를 변경하고자 할때만 선택하시오)</td>
                      </tr>
                      <tr>
@@ -63,11 +64,26 @@
                </td>
             </tr>
          </table>
-         <input type="hidden" name="nonmakeImg" value="${product.pictureUrl}">
+         
          <br> <input type="submit" value="수정" onclick="return productCheck()"> 
          	<input type="reset" value="다시작성"> 
          	<input type="button" value="목록" onclick="location.href='FruitServlet?command=product_list'">
       </form>
+      
+    <script>
+	function previewImage(event) {
+    let file = event.target.files[0];
+    if (!file) return;
+
+    let reader = new FileReader();
+    reader.onload = function(e) {
+        document.getElementById('previewImg').src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+	}
+	</script>
+	
+	
       
 </div>
 </body>

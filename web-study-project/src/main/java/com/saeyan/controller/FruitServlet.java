@@ -2,6 +2,7 @@ package com.saeyan.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,11 @@ import com.saeyan.controller.action.Action;
 
 
 @WebServlet("/FruitServlet")
+@MultipartConfig(
+    fileSizeThreshold = 1024 * 1024,
+    maxFileSize = 1024 * 1024 * 5,
+    maxRequestSize = 1024 * 1024 * 10
+)
 public class FruitServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

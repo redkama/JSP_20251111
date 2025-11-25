@@ -35,4 +35,6 @@
     <fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
     <fullyQualifiedTypeName name="com.saeyan.dto.ProductVO"/>
     <fullyQualifiedTypeName name="com.saeyan.dao.ProductDAO"/>
+    <fullyQualifiedTypeName name="javax.servlet.annotation.MultipartConfig"/>
+    <fullyQualifiedTypeName name="com.oreilly.servlet.multipart.Part"/>
 </qualifiedTypeNameHistroy>
