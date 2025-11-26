@@ -50,11 +50,11 @@ public class MemberDAO {
             pstmt.setString(3, mvo.getUserpw());
             pstmt.setString(4, mvo.getNick());
             pstmt.setString(5, mvo.getPhone());
-            pstmt.setInt(6, mvo.getAdmin());
-            pstmt.setString(7, mvo.getEmail());
-            pstmt.setString(8, mvo.getRegDate());
-            pstmt.setString(9, mvo.getAddress());
-
+            pstmt.setString(6, mvo.getEmail());
+            int adminValue = (mvo.getAdmin() == 0) ? 0 : mvo.getAdmin();
+            pstmt.setInt(7, adminValue);
+            pstmt.setString(8, mvo.getAddress());
+           
             pstmt.executeUpdate();
 
         } catch (Exception e) {

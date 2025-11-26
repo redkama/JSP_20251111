@@ -9,15 +9,15 @@
        <script type="text/javascript" src="script/join.js"></script>
     </head>
 
-	<header>
+   <header>
         <nav>
-        	<ul>
+           <ul>
                 <li style ="border: white; font-size:50px" >
                 과일농장</li>           
             </ul>
         </nav> 
-	</header>
-	
+   </header>
+   
     <body>
         <div class="login-container">
             <h2>회원가입</h2>
@@ -27,6 +27,8 @@
                 method="post" onsubmit="return joinCheck()">
                 <!-- 아이디 중복확인 여부를 저장하는 hidden 필드 -->
                 <input type="hidden" name="idChecked" value="false">
+                <!-- 관리자 권한 필드 (0: 일반회원, 1: 관리자) -->
+                <input type="hidden" name="admin" value="0">
 
                 <div class="input-group">
                     <table>
@@ -95,9 +97,4 @@
     </html>
     
     
-    
-    
-    
-    
-    
-     </html>
+   
