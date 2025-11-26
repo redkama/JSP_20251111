@@ -24,6 +24,7 @@ public class FruitJoinAction implements Action {
         String email = request.getParameter("email");
         String address = request.getParameter("address");
         String nick = request.getParameter("nick");
+        String admin = request.getParameter("admin");
         String idChecked = request.getParameter("idChecked");
 
         // 1) 빈값 체크
@@ -36,6 +37,8 @@ public class FruitJoinAction implements Action {
             address == null || address.trim().equals("") ||
             nick == null || nick.trim().equals("")) {
 
+        	System.out.println(name);
+        	
             response.setContentType("text/html; charset=UTF-8");
             response.getWriter().println("<script>alert('모든 값을 입력해주세요.'); history.back();</script>");
             return;
@@ -62,10 +65,13 @@ public class FruitJoinAction implements Action {
         mvo.setName(name);
         mvo.setUserId(userId);
         mvo.setUserpw(userpw);
+        mvo.setNick(nick);
         mvo.setPhone(phone);
+        mvo.setAdmin(Integer.parseInt(admin));
         mvo.setEmail(email);
         mvo.setAddress(address);
-        mvo.setNick(nick);
+        
+        
 
         mdao.insertMember(mvo);
 

@@ -82,7 +82,9 @@
          </tr>
       </table>
 
-      <br> <input type="button" value="수정"
+      <br> 
+      <div align="center">
+      <input type="button" value="수정"
          onclick="location.href='FruitServlet?command=fruit_edit_form&user_id=${mvo.userId}'">
 
       <input type="button" value="취소"
@@ -94,7 +96,7 @@
            }
        		">
        		
-
+		</div>
    </form>
 
    <footer>

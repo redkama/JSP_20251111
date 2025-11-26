@@ -66,7 +66,7 @@
            }
        		">
          	<input type="button" value="목록" onclick="location.href='FruitServlet?command=product_list'">
-      </div>
+     	 </div>
       </form>
       
 </div>

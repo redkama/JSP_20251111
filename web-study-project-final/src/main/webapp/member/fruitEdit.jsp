@@ -1,6 +1,35 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<h2>회원 정보 수정</h2>
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>회원 상세 페이지</title>
+
+<link rel="stylesheet" type="text/css" href="css/shop.css">
+
+</head>
+
+<body>
+
+   <header>
+      <nav>
+         <ul>
+            <li><a
+               href="<%=request.getContextPath()%>/FruitServlet?command=fruit_home">공지사항</a></li>
+            <li><a
+               href="<%=request.getContextPath()%>/FruitServlet?command=fruit_Control">회원관리</a></li>
+            <li><a
+               href="<%=request.getContextPath()%>/FruitServlet?command=product_list">상품목록</a></li>
+         </ul>
+      </nav>
+   </header>
+
+<h2>회원정보 수정 페이지</h2>
+
 
 <form action="<%=request.getContextPath()%>/FruitServlet?command=fruit_update" method="post">
     
@@ -53,7 +82,16 @@
 </table>
 
 <br>
+<div align="center">
 <input type="submit" value="수정하기">
 <input type="button" value="취소" onclick="history.back();">
-
+</div>
 </form>
+
+   <footer>
+      <p>COPYRICHT(C) 2025 과일농장, Inc. All Rights Reserved</p>
+   </footer>
+
+</body>
+
+</html>

@@ -57,7 +57,7 @@
 
                         <tr>
                             <td>닉네임(*)</td>
-                            <td><input type="text" name="nickname" size="20" placeholder="2-10자"></td>
+                            <td><input type="text" name="nick" size="20" placeholder="2-10자"></td>
                         </tr>
 
                         <tr>

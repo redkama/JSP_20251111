@@ -81,7 +81,7 @@ function checkId() {
     }
     
     // 중복 확인 요청
-    window.location.href = "<%=request.getContextPath()%>/FruitServilet?command=fruit_id_check&userId=" + userId;
+    window.location.href = "<%=request.getContextPath()%>/FruitServlet?command=fruit_id_check&userId=" + userId;
 }
 
 function useThisId() {

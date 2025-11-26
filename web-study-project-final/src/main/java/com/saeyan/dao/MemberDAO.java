@@ -36,7 +36,7 @@ public class MemberDAO {
      */
     public void insertMember(MemberVO mvo) {
         String sql = "INSERT INTO members(name, user_id, user_pw, nick, phone, email, admin, reg_date, address) "
-                   + "VALUES (?, ?, ?, ?, ?, NOW(), ?)";
+                   + "VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), ?)";
 
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -52,7 +52,8 @@ public class MemberDAO {
             pstmt.setString(5, mvo.getPhone());
             pstmt.setInt(6, mvo.getAdmin());
             pstmt.setString(7, mvo.getEmail());
-            pstmt.setString(8, mvo.getAddress());
+            pstmt.setString(8, mvo.getRegDate());
+            pstmt.setString(9, mvo.getAddress());
 
             pstmt.executeUpdate();
 

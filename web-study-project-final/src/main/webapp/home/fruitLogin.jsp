@@ -6,15 +6,21 @@
         <meta charset="UTF-8">
         <title>Insert title here</title>
         <link rel="stylesheet" type="text/css" href="css/login.css">
+        <% String message=(String) request.getAttribute("message"); if (message !=null && !message.isEmpty()) { %>
+            <script type="text/javascript">
+                alert("<%= message %>");
+            </script>
+            <% } %>
     </head>
-	<header>
+    <header>
         <nav>
-        	<ul>
-                <li style ="border: white; font-size:50px" >
-                과일농장</li>           
+            <ul>
+                <li style="border: white; font-size:50px">
+                    과일농장</li>
             </ul>
-        </nav> 
-	</header>
+        </nav>
+    </header>
+
     <body>
         <div class="login-container">
             <h2>로그인</h2>
@@ -41,9 +47,7 @@
         <footer>
             <p>COPYRICHT(C) 2025 과일농장, lnc. All Rights Reserved</p>
         </footer>
-	 <h1><a href="FruitServlet?command=fruit_home">홈으로</a></h1>
+        <h1><a href="FruitServlet?command=fruit_home">홈으로</a></h1>
     </body>
 
     </html>
-    
- 

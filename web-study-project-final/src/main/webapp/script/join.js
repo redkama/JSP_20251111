@@ -112,7 +112,7 @@
          return false;
      }
 
-     var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+     var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{3,30}$/;
      if (!emailPattern.test(form.email.value)) {
          alert("이메일 형식이 올바르지 않습니다.");
          form.email.focus();
