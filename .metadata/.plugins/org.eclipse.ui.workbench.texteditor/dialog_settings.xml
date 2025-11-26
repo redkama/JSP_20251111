@@ -4,6 +4,13 @@
 	<section name="java.lang.Class">
 		<item key="replaceBarOpen" value="false"/>
 		<list key="findhistory">
+			<item value="check"/>
+			<item value="openIdCheck"/>
+			<item value="userCheck"/>
+			<item value="session"/>
+			<item value="fruit_update"/>
+			<item value="fruit_edit_form"/>
+			<item value="nick"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
